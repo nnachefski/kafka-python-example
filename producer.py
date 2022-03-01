@@ -15,3 +15,4 @@ send_message = (''.join(random.choice(letters) for i in range(20)))
 print("sending '%s' to '%s'"%(send_message, args.dest))
 future = producer.send(args.topic, b"%s"%send_message)
 result = future.get(timeout=60)
+
