@@ -12,7 +12,7 @@ args = parser.parse_args()
 producer = KafkaProducer(bootstrap_servers=args.dest)
 letters = string.ascii_letters
 send_message = (''.join(random.choice(letters) for i in range(20)))
-print("sending '%s' to '%s'"%(send_message, args.dest))
+print("sending '%s' to '%s'"%(send_message, args.topic))
 future = producer.send(args.topic, b"%s"%send_message)
 result = future.get(timeout=60)
 
