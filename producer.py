@@ -9,7 +9,10 @@ parser.add_argument('kafka', action="store", default="kafka-hc-kafka-bootstrap.k
 parser.add_argument('-t', action="store", default=False, required=True, help='kafka topic')
 args = parser.parse_args()
 
-producer = KafkaProducer(bootstrap_servers=args.kafka)
+producer = KafkaProducer(security_protocol='SSL',
+                         ssl_check_hostname=False,
+                         bootstrap_servers=args.kafka)
+
 letters = string.ascii_letters
 send_message = (''.join(random.choice(letters) for i in range(20)))
 print("sending '%s' to '%s'"%(send_message, args.topic))
