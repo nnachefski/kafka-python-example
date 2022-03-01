@@ -6,7 +6,7 @@ from kafka import KafkaProducer
 
 parser = argparse.ArgumentParser(description='Import images for disconnected OCP installs')
 parser.add_argument('kafka', action="store", default="kafka-hc-kafka-bootstrap.kafka.svc.cluster.local:9092", help='kafka bootstrap endpoint, Ex: kafka-hc-kafka-bootstrap.kafka.svc.cluster.local:9092')
-parser.add_argument('-t', action="topic", default=False, required=True, help='kafka topic')
+parser.add_argument('-t', action="store", default=False, required=True, help='kafka topic')
 args = parser.parse_args()
 
 producer = KafkaProducer(bootstrap_servers=args.dest)
